@@ -1,6 +1,6 @@
 // En el módulo moviedb, defino el controlador
 angular.module("moviedb").controller("MenuController",
-	["$scope", function($scope){
+	["$scope", "$location", function($scope, $location){
 		
 		// Scope init
 		$scope.model = {
