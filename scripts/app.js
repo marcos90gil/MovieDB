@@ -1,5 +1,5 @@
 // Defino el módulo "moviedb"
-angular.module("moviedb", ['ngRoute']).config(
+angular.module("moviedb", ["ngRoute"]).config(
 	["$routeProvider", function($routeProvider){
 		
 		// Url configuration

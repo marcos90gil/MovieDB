@@ -5,7 +5,7 @@ node_modules/
 bower_components/
 
 # Archivos de producción
-dist
+dist/
 
 # Archivos del SO
 .DS_Store
