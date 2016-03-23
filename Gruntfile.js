@@ -15,6 +15,7 @@ module.exports = function (grunt) {
                 src: [
                     'bower_components/angular/angular.js',
                     'bower_components/angular-route/angular-route.js',
+                    'bower_components/moment/moment.js',
                     'scripts/**/*.js',
                     'scripts/*.js'
                 ],
