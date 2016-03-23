@@ -1,9 +1,16 @@
-angular.module("moviedb").controller("MoviesListController", 
-	["$scope", "$log", "MovieService", function($scope, $log, MovieService){
+angular.module('moviedb').controller('MoviesListController', 
+	['$scope', '$log', 'MovieService', 'URL', 'paths',
+    function($scope, $log, MovieService, URL, paths){
 		
 		// Scope model init
-		$scope.uiState = 'loading';
 		$scope.model = [];
+        $scope.uiState = 'loading';
+        $scope.url = URL.resolve;
+
+        // Scope methods
+        $scope.getMovieDetailURL = function(movie) {
+            return URL.resolve(paths.movieDetail, { id: movie.id });
+        };
 
         // Controller start
         MovieService.getMovies().then(
@@ -11,13 +18,13 @@ angular.module("moviedb").controller("MoviesListController",
         	function(data) {        	
         		$scope.model = data;
         		if ($scope.model.length === 0) {
-        			$scope.uiState = "blank";
+        			$scope.uiState = 'blank';
         		} else {
-        			$scope.uiState = "ideal";
+        			$scope.uiState = 'ideal';
         		}
         	},
         	//rejected promise
-        	function(data) {
+        	function() {
         		$scope.uiState = 'error';
         	}
     	);

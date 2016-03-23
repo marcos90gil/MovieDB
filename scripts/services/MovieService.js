@@ -1,30 +1,44 @@
 angular.module('moviedb').service('MovieService',
-	['$http', '$q', function($http, $q) {
+	['$http', '$q', 'apiPaths', 'URL', 
+	function($http, $q, apiPaths, URL) {
 	
-			this.getMovies = function() {
+		this.apiRequest = function(url) {
 
-				// deferred object creation
-				var deferred = $q.defer();
+			// deferred object creation
+			var deferred = $q.defer();
 
-				// async work
-				$http.get('api/movies/')
-					.then(
-						// ok request
-						function(response) {
-							// promise resolve
-							deferred.resolve(response.data);
-						},
-						// KO request
-						function(response) {
-							// promise reject
-							deferred.reject(response.data);
-						}
-					);
+			// async work
+			$http.get(url)
+				.then(
+					// ok request
+					function(response) {
+						// promise resolve
+						deferred.resolve(response.data);
+					},
+					// KO request
+					function(response) {
+						// promise reject
+						deferred.reject(response.data);
+					}
+				);
 
-				// return promise
-				return deferred.promise;
+			// return promise
+			return deferred.promise;
 
-			};
+		};
+
+		this.getMovies = function() {
+
+			return this.apiRequest(apiPaths.movies);
+
+		};
+
+		this.getMovie = function(movieId) {
+
+			var url = URL.resolve(apiPaths.movieDetail, { id: movieId });
+			return this.apiRequest(url);
+
+		};
 
 	}]
 );
