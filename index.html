@@ -8,7 +8,6 @@
 </head>
 
 <body>
-    
     <nav class="navbar navbar-default" ng-controller="MenuController">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -18,19 +17,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#/">Movie DB</a>
+                <a class="navbar-brand" href="#{{::path.home}}">Movie DB</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li ng-class="getClassForItem('/movies')">
-                        <a href="#/movies">Movies</a>
+                    <li ng-class="getClassForItem(path.movies)">
+                        <a href="#{{::paths.movies}}">Movies</a>
                     </li>
-                    <li ng-class="getClassForItem('/series')">
-                        <a href="#/series">Series</a>
+                    <li ng-class="getClassForItem(path.series)">
+                        <a href="{{::paths.series}}">Series</a>
                     </li>
-                    <li ng-class="getClassForItem('/people')">
-                        <a href="#/people">People</a>
+                    <li ng-class="getClassForItem(path.people)">
+                        <a href="#{{::paths.people}}">People</a>
                     </li>
                 </ul>
             </div>
@@ -38,14 +37,13 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-	<div class="container">		
-		<div class="row">
-			<div class="col-xs-12">
-				<div ng-view></div>
-			</div>
-		</div>
-	</div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
     <script src="dist/app.js"></script>
 </body>
 
