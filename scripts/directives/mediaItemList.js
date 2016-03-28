@@ -5,6 +5,6 @@ angular.module('moviedb').directive('mediaItemList', function() {
 			model: '=items',
 			getDetailUrl: '&'
 		},
-		templateUrl: 'views/mediaItemList.html'
+		templateUrl: 'views/MediaItemList.html'
 	};
 });
