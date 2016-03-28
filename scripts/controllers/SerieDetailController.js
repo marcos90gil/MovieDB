@@ -1,4 +1,4 @@
-angular.module('moviedb').controller('MovieDetailController', 
+angular.module('moviedb').controller('SerieDetailController', 
 	['$scope', '$routeParams', '$location', 'APIClient', 'paths', 
 	function($scope, $routeParams, $location, APIClient, paths){
 
@@ -8,10 +8,10 @@ angular.module('moviedb').controller('MovieDetailController',
 		
 		// Controller init
 		$scope.$emit('ChangeTitle', 'Loading...');
-		APIClient.getMovie($routeParams.id).then(
-			// Movie found
-			function(movie) {
-				$scope.model = movie;
+		APIClient.getSerie($routeParams.id).then(
+			// Serie found
+			function(serie) {
+				$scope.model = serie;
 				$scope.uiState = 'ideal';
 				$scope.$emit('ChangeTitle', $scope.model.title);
 			},

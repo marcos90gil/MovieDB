@@ -1,4 +1,4 @@
-angular.module('moviedb').controller('MoviesListController', 
+angular.module('moviedb').controller('SeriesListController',
 	['$scope', '$log', 'APIClient', 'URL', 'paths',
     function($scope, $log, APIClient, URL, paths){
 		
@@ -8,12 +8,12 @@ angular.module('moviedb').controller('MoviesListController',
         $scope.url = URL.resolve;
 
         // Scope methods
-        $scope.getMovieDetailURL = function(movie) {
-            return URL.resolve(paths.movieDetail, { id: movie.id });
+        $scope.getSerieDetailURL = function(serie) {
+            return URL.resolve(paths.serieDetail, { id: serie.id });
         };
 
         // Controller start
-        APIClient.getMovies().then(
+        APIClient.getSeries().then(
         	//resolved promise
         	function(data) {        	
         		$scope.model = data;
@@ -30,5 +30,4 @@ angular.module('moviedb').controller('MoviesListController',
     	);
 
 	}]
-
 );
