@@ -14,8 +14,12 @@ angular.module('moviedb').controller('AppController',
 	    };
 
 	    // Scope event listeners
-	    $scope.$on('$locationChangeSuccess', function() {
+	    $scope.$on('$locationChangeSuccess', function(evt, currentRoute) {
 	        $scope.model.title = controller.titles[$location.path()] || '404 Not Found';
+	    });
+
+	    $scope.$on('ChangeTitle', function(evt, title) {
+	    	$scope.model.title = title;
 	    });
 
 }]);

@@ -1,6 +1,6 @@
 angular.module('moviedb').controller('MoviesListController', 
-	['$scope', '$log', 'MovieService', 'URL', 'paths',
-    function($scope, $log, MovieService, URL, paths){
+	['$scope', '$log', 'APIClient', 'URL', 'paths',
+    function($scope, $log, APIClient, URL, paths){
 		
 		// Scope model init
 		$scope.model = [];
@@ -13,7 +13,7 @@ angular.module('moviedb').controller('MoviesListController',
         };
 
         // Controller start
-        MovieService.getMovies().then(
+        APIClient.getMovies().then(
         	//resolved promise
         	function(data) {        	
         		$scope.model = data;
