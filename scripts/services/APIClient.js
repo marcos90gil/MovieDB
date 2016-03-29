@@ -53,5 +53,29 @@ angular.module('moviedb').service('APIClient',
 
 		};
 
+		this.createMovie = function(movie) {
+			// deferred object creation
+			var deferred = $q.defer();
+
+			// async work
+			$http.post(apiPaths.movies, movie)
+				.then(
+					// ok request
+					function(response) {
+						// promise resolve
+						deferred.resolve(response.data);
+					},
+					// KO request
+					function(response) {
+						// promise reject
+						deferred.reject(response.data);
+					}
+				);
+
+			// return promise
+			return deferred.promise;
+
+		};
+
 	}]
 );

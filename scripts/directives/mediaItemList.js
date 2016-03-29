@@ -3,8 +3,9 @@ angular.module('moviedb').directive('mediaItemList', function() {
 		restrict: 'AE',
 		scope: {
 			model: '=items',
-			getDetailUrl: '&'
+			getDetailUrl: '&',
+			dateMode: '@'
 		},
-		templateUrl: 'views/MediaItemList.html'
+		templateUrl: 'views/mediaItemList.html'
 	};
 });
