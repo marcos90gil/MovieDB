@@ -1,8 +1,14 @@
-<div>
+<div ng-controller="MovieFormController">
 	
 	<h1>New Movie</h1>
+
+	<div class="alert alert-success" ng-show="successMessage" ng-bind-html="successMessage"></div>
+
+	<div class="alert alert-danger" ng-show="errorMessage">
+		{{ errorMessage }} 
+	</div>
 	
-	<form name="movieForm" class="form-horizontal" novalidate>
+	<form name="movieForm" class="form-horizontal" ng-submit="saveMovie()" novalidate>
 		<div class="form-group" ng-class="{ 'has-success': movieForm.title.$valid, 'has-error': movieForm.title.$invalid }">
 			<label for="title" class="col-sm-2 control-label">Title</label>
 			<div class="col-sm-10">
@@ -51,9 +57,12 @@
 		<div class="form-group" ng-class="{ 'has-success': movieForm.overview.$valid, 'has-error': movieForm.overview.$invalid }">
 			<label for="overview" class="col-sm-2 control-label">Overview</label>
 			<div class="col-sm-10">
-				<textarea type="text" name="overview" ng-model="model.overview" class="form-control" rows="5" required></textarea>
+				<textarea badwords type="text" name="overview" ng-model="model.overview" class="form-control" rows="5" required></textarea>
 				<div class="text-danger" ng-show="movieForm.overview.$dirty && movieForm.overview.$error.required">
 					The overview is required
+				</div>
+				<div class="text-danger" ng-show="movieForm.overview.$dirty && movieForm.overview.$error.badwords">
+					The word '{{ movieForm.overview.badword }}' is not allowed
 				</div>
 			</div>
 		</div>
